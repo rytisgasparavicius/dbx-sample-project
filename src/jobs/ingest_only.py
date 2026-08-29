@@ -5,8 +5,8 @@ from pyspark.sql import functions as f
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--source-table", required=True)
-    parser.add_argument("--target-table", required=True)
+    parser.add_argument("--source_table", required=True)
+    parser.add_argument("--target_table", required=True)
 
     return parser.parse_args()
 

@@ -7,7 +7,7 @@ resources:
           new_cluster:
             spark_version: "17.3.x-scala2.13"
             num_workers: 1
-            node_type_id: "Standard_D4ds_v5"
+            instance_pool_id: 0829-150212-gasp200-pool-2m7yln8u
           spark_python_task:
             python_file: ${workspace.file_path}/src/jobs/ingest_only.py
             parameters:
