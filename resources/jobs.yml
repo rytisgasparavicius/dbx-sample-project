@@ -1,0 +1,17 @@
+resources:
+  jobs:
+    ingest_job:
+      name: ingest_job_name
+      tasks:
+        - task_key: ingest
+          new_cluster:
+            spark_version: "17.3.x-scala2.13"
+            num_workers: 1
+            node_type_id: "Standard_D4ds_v5"
+          spark_python_task:
+            python_file: ${workspace.file_path}/src/jobs/ingest_only.py
+            parameters:
+              - --source_table
+              - ${var.source_table}
+              - --target_table
+              - ${var.target_table}

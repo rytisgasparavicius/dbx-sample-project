@@ -1,0 +1,18 @@
+bundle:
+  name: dbx-sample-project
+include:
+  - resources/*.yml
+
+variables:
+  source_table:
+    default: "rytis_test_catalog.learning.countries_table"
+  target_table:
+    default: "rytis_test_catalog.learning.countries_table_copy"
+
+targets:
+  dev:
+    mode: development
+    default: true
+    workspace:
+      host: adb-7405605719657288.8.azuredatabricks
+      root_path: /Workspace/Users/${workspace.current_user.userName}/.bundle/${bundle.name}/${bundle.target}
