@@ -15,7 +15,7 @@ def main() -> None:
     args = parse_args()
     spark = SparkSession.builder.getOrCreate()
     df = spark.table(args.source_table).withColumn("processed_ts",f.current_timestamp())
-    df.write.mode("override").format("delta").saveAsTable(args.target_table)
+    df.write.mode("overwrite").format("delta").saveAsTable(args.target_table)
 
     row_count = spark.table(args.target_table).count()
     print(f"Done: {args.source_table} -> {args.target_table}, rows={row_count}")
