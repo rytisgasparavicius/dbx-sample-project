@@ -2,14 +2,9 @@ resources:
   jobs:
     ingest_job:
       name: ingest_job_name
+      job_clusters: []
       tasks:
-        - task_key: ingest
-          new_cluster:
-            spark_version: "17.3.x-scala2.13"
-            num_workers: 1
-            instance_pool_id: 0829-150212-gasp200-pool-2m7yln8u
-            driver_instance_pool_id: 0829-150212-gasp200-pool-2m7yln8u
-            data_security_mode: SINGLE_USER
+        - task_key: ingest          
           spark_python_task:
             python_file: ${workspace.file_path}/src/jobs/ingest_only.py
             parameters:
@@ -17,3 +12,7 @@ resources:
               - ${var.source_table}
               - --target_table
               - ${var.target_table}
+          environment_key: default
+      environments:
+        - environment_key: default
+          spec: "1"
